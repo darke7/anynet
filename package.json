@@ -4,7 +4,9 @@
   "description": "A nodeJs static resource server Edit",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+    "fix": "eslint --fix"
   },
   "repository": {
     "type": "git",
@@ -18,6 +20,11 @@
   "homepage": "https://github.com/darke7/anynet#readme",
   "devDependencies": {
     "babel": "^6.23.0",
-    "eslint": "^4.14.0"
-  }
+    "eslint": "^4.14.0",
+    "pre-commit": "^1.2.2"
+  },
+  "pre-commit":[
+    "fix",
+    "lint"
+  ]
 }
