@@ -1,13 +1,21 @@
 const http = require('http');
 const chalk = require('chalk');
+const path = require('path');
+
 const conf = require('./config/defautConfig');
+const route = require('./helper/route');
 
 const server = http.createServer((req,res)=>{
+    const filePath = path.join(conf.root,req.url);
+    route(req,res,filePath);
+
     res.statusCode = 200;
     res.setHeader('Conent-Type','text/html');
-    res.write('<h1>');
-    res.end('hello http! </h1>');
+    res.end(filePath,'utf8');
 });
+
+
+
 server.listen(conf.port,conf.hostname,()=>{
     const addr = `http://${conf.hostname}:${conf.port}`;
     console.info(`Server started at ${chalk.green(addr)}`);
