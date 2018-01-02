@@ -8,10 +8,6 @@ const route = require('./helper/route');
 const server = http.createServer((req,res)=>{
     const filePath = path.join(conf.root,req.url);
     route(req,res,filePath);
-
-    res.statusCode = 200;
-    res.setHeader('Conent-Type','text/html');
-    res.end(filePath,'utf8');
 });
 
 
