@@ -27,5 +27,8 @@
   "pre-commit": [
     "fix",
     "lint"
-  ]
+  ],
+  "dependencies": {
+    "handlebars": "^4.0.11"
+  }
 }
