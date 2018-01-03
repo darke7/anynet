@@ -5,8 +5,8 @@ const promisify = require('util').promisify;
 const stat = promisify(fs.stat);
 const readdir = promisify(fs.readdir);
 const config = require('../config/defautConfig');
-const mime = require('../helper/mime');
-const compress = require('../helper/compress');
+const mime = require('./mime');
+const compress = require('./compress');
 
 /* 文件页模板*/ 
 const tplPath = path.join(__dirname,'../template/dir.tpl');
@@ -24,8 +24,9 @@ module.exports = async function(req,res,filePath){
             res.setHeader('Content-Type',contentType);
             let rs = fs.createReadStream(filePath);
             if(filePath.match(config.compress)){
-                compress(rs,req,res);
+                rs = compress(rs,req,res);
             }
+            rs.pipe(res);
         }else if(stats.isDirectory()){
             const files = await readdir(filePath);
             res.statusCode = 200;
