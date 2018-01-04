@@ -12,6 +12,6 @@ module.exports = (rs,req,res)=>{
         return rs.pipe(createDeflate());
     }
     let x = 1;
-    console.info(x);
+  console.info(x);
 
 };
