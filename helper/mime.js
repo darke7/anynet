@@ -197,10 +197,9 @@ module.exports = (filePath)=>{
         .split('.')
         .pop()
         .toLowerCase();
-    
+
     if(!ext){
         ext = filePath;
     }
-
     return mimeTypes[ext]||mimeTypes[''];
 };
