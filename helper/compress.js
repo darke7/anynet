@@ -11,5 +11,4 @@ module.exports = (rs,req,res)=>{
         res.setHeader('Content-Encoding','deflate');
         return rs.pipe(createDeflate());
     }
-    console.log();
 };
